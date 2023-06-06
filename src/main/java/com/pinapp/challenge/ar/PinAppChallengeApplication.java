@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PinappChallengeApplication {
+public class PinAppChallengeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PinappChallengeApplication.class, args);
+		SpringApplication.run(PinAppChallengeApplication.class, args);
 	}
 
 }
