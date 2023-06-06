@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import com.pinapp.challenge.ar.dtos.ClientDto;
+import com.pinapp.challenge.ar.dtos.ClientStatsDto;
 import com.pinapp.challenge.ar.services.ClientService;
 
 @RestController
@@ -56,6 +57,27 @@ public class ClientController {
             content = @Content(schema = @Schema(implementation = ClientDto.class)))
     public ResponseEntity<List<ClientDto>> getClientList() {
         List<ClientDto> clientList = clientService.getClientList();
+        return ResponseEntity.ok(clientList);
+    }
+
+    @GetMapping("/kpideclientes")
+    @Operation(summary = "Get client stats with average and standar deviation info")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Client Stats it s ok",
+                    content = @Content(schema = @Schema(implementation = ClientDto.class))),
+            @ApiResponse(responseCode = "404", description = "Client Stats have a problem")
+    })
+    public ResponseEntity<ClientStatsDto> getClientStats() {
+        ClientStatsDto clientStatsDto = clientService.getClientStats();
+        return ResponseEntity.ok(clientStatsDto);
+    }
+
+    @GetMapping("/listclientes")
+    @Operation(summary = "Get a list of all clients with estimated death date")
+    @ApiResponse(responseCode = "200", description = "List of clients",
+            content = @Content(schema = @Schema(implementation = ClientDto.class)))
+    public ResponseEntity<List<ClientDto>> getClientListWithEstimatedDeathDate() {
+        List<ClientDto> clientList = clientService.getClientListWithEstimatedDeathDate();
         return ResponseEntity.ok(clientList);
     }
 }

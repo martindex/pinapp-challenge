@@ -8,6 +8,8 @@ public class ClientDto {
     private int age;
     private LocalDate dateOfBirth;
 
+    private LocalDate estimatedDeathDate;
+
     public ClientDto() {
     }
 
@@ -48,5 +50,13 @@ public class ClientDto {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public LocalDate getEstimatedDeathDate() {
+        return estimatedDeathDate;
+    }
+
+    public void setEstimatedDeathDate(LocalDate estimatedDeathDate) {
+        this.estimatedDeathDate = estimatedDeathDate;
     }
 }
