@@ -76,8 +76,8 @@ public class ClientServiceImpl implements ClientService {
         return clients.stream()
                 .map(client -> modelMapper.map(client, ClientDto.class))
                 .peek(client -> {
-                    int remainingYears = (int)averageAge - client.getAge();
-                    LocalDate estimatedDeathDate = LocalDate.now().plusYears(remainingYears);
+                    int estimatedDeathYear = (int)averageAge + client.getDateOfBirth().getYear();
+                    LocalDate estimatedDeathDate = client.getDateOfBirth().withYear(estimatedDeathYear);
                     client.setEstimatedDeathDate(estimatedDeathDate);
                 })
                 .collect(Collectors.toList());

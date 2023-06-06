@@ -64,7 +64,7 @@ public class ClientController {
     @Operation(summary = "Get client stats with average and standar deviation info")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Client Stats it s ok",
-                    content = @Content(schema = @Schema(implementation = ClientDto.class))),
+                    content = @Content(schema = @Schema(implementation = ClientStatsDto.class))),
             @ApiResponse(responseCode = "404", description = "Client Stats have a problem")
     })
     public ResponseEntity<ClientStatsDto> getClientStats() {
