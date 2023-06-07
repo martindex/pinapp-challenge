@@ -29,21 +29,6 @@ public class ClientServiceImpl implements ClientService {
         clientRepository.save(client);
     }
 
-    @Override
-    public ClientDto getClient(Long id) {
-        Client client = clientRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Client not found with id: " + id));
-        return modelMapper.map(client, ClientDto.class);
-    }
-
-    @Override
-    public List<ClientDto> getClientList() {
-        List<Client> clients = clientRepository.findAll();
-        return clients.stream()
-                .map(client -> modelMapper.map(client, ClientDto.class))
-                .collect(Collectors.toList());
-    }
-
     public double getAverageAge(List<Client> clients){
         return clients.stream()
                 .mapToInt(Client::getAge)

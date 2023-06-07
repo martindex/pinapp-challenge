@@ -6,8 +6,6 @@ import com.pinapp.challenge.ar.dtos.ClientStatsDto;
 
 public interface ClientService {
     void createClient(ClientDto clientDto);
-    ClientDto getClient(Long id);
-    List<ClientDto> getClientList();
 
     ClientStatsDto getClientStats();
 
